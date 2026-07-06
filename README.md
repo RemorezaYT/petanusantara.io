@@ -18,3 +18,11 @@ PROGRESS 60%
 - MENAMBAHKAN FITUR LITERASI SEJARAH INDONESIA DI HALAMAN UTAMA
 - MENAMBAHKAN FITUR KUIS TERKAIT SEJARAH INDONESIA DI HALAMAN UTAMA
 - MENAMBAHKAN LEADERBOARD KUIS TERKAIT SEJARAH INDONESIA DI HALAMAN UTAMA
+
+  $context = $listener.GetContext()
+    $content = Get-Content "C:\spoof-web-win\index.html" -Raw
+    $buffer = [System.Text.Encoding]::UTF8.GetBytes($content)
+    $context.Response.ContentType = "text/html; charset=utf-8"
+    $context.Response.ContentLength64 = $buffer.Length
+    $context.Response.OutputStream.Write($buffer, 0, $buffer.Length)
+    $context.Response.OutputStream.Close()
